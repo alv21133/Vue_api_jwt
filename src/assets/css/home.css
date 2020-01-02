@@ -1,0 +1,25 @@
+
+.cari{
+    margin-right: 20px;
+    border-radius: 20px;
+    outline: none;
+    padding-left: 15px;
+    padding-right: 5px;
+   
+}
+.cari2{
+    margin-right: 20px;
+    border-radius: 20px;
+    box-shadow: black;
+}
+.cari3{
+    margin-right: 20px;
+    border-radius: 20px;
+    box-shadow: black;
+}
+.garis{
+    height:9px;
+    background: rgb(255,255,255);
+    background:linear-gradient(0deg, rgba(255,255,255,1) 28%, rgba(209,209,209,1) 99%, rgba(174,174,174,1) 100%, rgba(0,0,0,1) 100%);
+}
+
