@@ -6,7 +6,8 @@
 			<input v-model="key"   placeholder="password">
 			<button v-on:click="login()" >Login</button>
 		</div>
-		<div v-if="hasil.sucess == true" class="jumbotron jumbotron-fluid">
+		<p>{{token}}</p>
+		<div v-if="token" class="jumbotron jumbotron-fluid">
 			<div class="container">
 				<h1 class="display-1 text-center">Selamat  !!! </h1>
 				<p class="lead text-center">Kamu berhasil login  Menggunakan jwt</p>
@@ -30,12 +31,16 @@ export default {
 			email:'',
 			key:'',
 			hasil:String,
+			token:'',
+			page: Boolean,
 		}),
 		components:{
 		atas
 		},
 
 		methods:{
+
+
 
 				login(){
 
@@ -59,8 +64,9 @@ export default {
 					}).then((response)=>{
 						this.hasil= response.data;
 						console.log(this.hasil);
-						Vue.$cookies.set("kunci", this.hasil.token, "7D");
-						console.log(Vue.$cookies.get("kunci"));
+						Vue.$cookies.set("kunci", this.hasil.token, "50s");
+						//console.log(Vue.$cookies.get("kunci"));
+						this.token=Vue.$cookies.get("kunci")
 
 					});
 
@@ -82,14 +88,21 @@ export default {
 
 						// });
 
-				}
+
+				},
+
+
 
 		},
 
 		mounted(){
 
-
+				this.token = document.cookie;
+				console.log(this.token)
 		}
 
 }
+
 </script>
+
+
