@@ -11,6 +11,7 @@
 			<div class="container">
 				<h1 class="display-1 text-center">Selamat  !!! </h1>
 				<p class="lead text-center">Kamu berhasil login  Menggunakan jwt</p>
+				<button v-on:click="get()">Get data</button>
 			</div>
 		</div>
 	</div>
@@ -40,8 +41,6 @@ export default {
 
 		methods:{
 
-
-
 				login(){
 
 					// console.log(this.email);
@@ -53,18 +52,19 @@ export default {
 					let dataq = {'username': this.email, 'password' : this.key}
 					Vue.axios({
 							method : 'POST',
-							url:'http://192.168.0.132:3000/login',
+							url:'http://192.168.0.100:3000/login',
 							data: qs.stringify(dataq),
 							headers:{
 
 								'Content-Type': 'application/x-www-form-urlencoded',
+								// 'Authorization': "bearer " + token
 								//'Accept' : 'application/json',
   								//'Authorization' : 'Bearer <token_here>'
 							}
 					}).then((response)=>{
 						this.hasil= response.data;
 						console.log(this.hasil);
-						Vue.$cookies.set("kunci", this.hasil.token, "50s");
+						Vue.$cookies.set("kunci", this.hasil.token, "180s");
 						//console.log(Vue.$cookies.get("kunci"));
 						this.token=Vue.$cookies.get("kunci")
 
@@ -92,6 +92,36 @@ export default {
 				},
 
 
+			check_cookie_name()
+
+				{
+					var value = document.cookie;
+					var parts = value.split("; " + name + "=");
+					if (parts.length == 2) return parts.pop().split(";").shift();
+   				},
+
+
+			get(){
+
+				//let key_token = document.cookie.replace(/(?:(?:^|.*;\s*)kunci\s*=\s*([^;]*).*$)|^.*$/, "$1");
+					let key_token = '92835bafgcjhf2924mn';
+				let request = {
+
+					method : 'GET',
+					headers: {
+						'Content-Type': 'application/x-www-form-urlencoded',
+						'Authorization' : 'Bearer ' + key_token
+					},
+					url:'http://192.168.0.100:3000/blog',
+
+				};
+
+					axios(request).then((response)=>{
+						console.log(response.data)
+					})
+			}
+
+
 
 		},
 
@@ -99,6 +129,7 @@ export default {
 
 				this.token = document.cookie;
 				console.log(this.token)
+
 		}
 
 }
