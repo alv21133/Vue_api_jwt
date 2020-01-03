@@ -14,126 +14,45 @@
 				<button v-on:click="get()">Get data</button>
 			</div>
 		</div>
+
+		<div class="d-flex flex-row-reverse bd-highlight" id="berita" >
+
+			<div class="btn-group btn-group-lg">
+				<button  v-on:click="text1()" type="button" class="btn btn_berita active">Apple</button>
+				<button v-on:click="text2()" type="button" class="btn btn_berita">Samsung</button>
+				<button  v-on:click="text1()" type="button" class="btn btn_berita ">Sony</button>
+			</div>
+
+		</div>
+		<div v-show="togle1" class="mt-4">
+				<p>Lorem ipsum dolor sit, io consequuntur? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium cumque unde atque natus sed! Temporibus, voluptatum aut voluptas, illum repellat harum expedita commodi cumque dolores dolorem enim, odit nam in.</p>
+		</div>
+		<div v-show="togle2" class="mt-4">
+			<p>akarta, CNN Indonesia -- Tentara Nasional Indonesia baru saja menyatakan siaga tempur di wilayah perairan Kepulauan Natuna dan sekitarnya. Sikap itu diambil tak lepas dari gelagat China yang mengklaim berdaulat di perairan tersebut sehingga kapal-kapalnya bebas berlayar.</p>
+		</div>
+		<div v-show="togle3" class="mt-4">
+				<p>Google + Google+ atau Google Plus adalah jejaring sosial yang dioperasikan oleh Google Inc. Google+ diluncurkan pada 28 Juni 2011 dengan sistem undangan untuk diuji coba.</p>
+		</div>
+
 	</div>
 </template>
-<script>
-import Vue from "vue";
-import axios from "axios";
-import VueAxios from "vue-axios";
-import VueCookies from 'vue-cookies'
-import qs from 'qs';
-import atas from "@/components/atas.vue";
-Vue.use(VueAxios, axios);
-Vue.use(VueCookies);
-
-export default {
-		name: "login",
-		data:() => ({
-			email:'',
-			key:'',
-			hasil:String,
-			token:'',
-			page: Boolean,
-		}),
-		components:{
-		atas
-		},
-
-		methods:{
-
-				login(){
-
-					// console.log(this.email);
-					// console.log(this.key);
-
-					console.log(this.email);
-					console.log(this.key);
-
-					let dataq = {'username': this.email, 'password' : this.key}
-					Vue.axios({
-							method : 'POST',
-							url:'http://192.168.0.100:3000/login',
-							data: qs.stringify(dataq),
-							headers:{
-
-								'Content-Type': 'application/x-www-form-urlencoded',
-								// 'Authorization': "bearer " + token
-								//'Accept' : 'application/json',
-  								//'Authorization' : 'Bearer <token_here>'
-							}
-					}).then((response)=>{
-						this.hasil= response.data;
-						console.log(this.hasil);
-						Vue.$cookies.set("kunci", this.hasil.token, "180s");
-						//console.log(Vue.$cookies.get("kunci"));
-						this.token=Vue.$cookies.get("kunci")
-
-					});
-
-						// ================menggnakan es6=====================
-						// const data = { 'email': this.email, 'password': this.key };
-						// const options = {
-						// method: 'POST',
-						// headers: {
-						// 			'Content-Type': 'application/x-www-form-urlencoded',
-						// 		 },
-						// data: qs.stringify(data),
-						// url:'http://192.168.0.102:8000/api/guru/login',
-						// };
-						// axios(options).then((response)=>{
-
-						// 	this.hasil= response.data
-
-						// 	console.log(this.hasil)
-
-						// });
+<style>
+	.btn_berita{
+		background-color: beige;
+		color: black;
 
 
-				},
+	}
 
-
-			check_cookie_name()
-
-				{
-					var value = document.cookie;
-					var parts = value.split("; " + name + "=");
-					if (parts.length == 2) return parts.pop().split(";").shift();
-   				},
-
-
-			get(){
-
-				//let key_token = document.cookie.replace(/(?:(?:^|.*;\s*)kunci\s*=\s*([^;]*).*$)|^.*$/, "$1");
-					let key_token = '92835bafgcjhf2924mn';
-				let request = {
-
-					method : 'GET',
-					headers: {
-						'Content-Type': 'application/x-www-form-urlencoded',
-						'Authorization' : 'Bearer ' + key_token
-					},
-					url:'http://192.168.0.100:3000/blog',
-
-				};
-
-					axios(request).then((response)=>{
-						console.log(response.data)
-					})
-			}
-
-
-
-		},
-
-		mounted(){
-
-				this.token = document.cookie;
-				console.log(this.token)
-
-		}
-
+	.active,.btn_berita:hover{
+		background-color: gold;
+		color: black;
+	}
+.btn_berita:focus,.btn_berita:active {
+   outline: none !important;
+   box-shadow: none;
 }
-
-</script>
+</style>
+<script src="../js/login.js"></script>
 
 

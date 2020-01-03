@@ -29,6 +29,11 @@ const routes = [
     name: "login",
     component:()=>import("../components/login.vue")
   },
+  {
+    path: "/masukan",
+    name: "masukan",
+    component:()=>import("../components/masukan.vue")
+  },
 ];
 
 const router = new VueRouter({
