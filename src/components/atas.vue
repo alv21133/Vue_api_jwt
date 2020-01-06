@@ -1,8 +1,9 @@
 <template>
   <div id="atas">
       <!-- navbar -->
+      <div style="z-index:99;position:fixed; width:100%">
         <div id="nav">
-          <div class="row justify-content-between bg-light">
+          <div class="row justify-content-between bg-light" >
               <div class="col-md-4 offset-md-1" style="padding-top:6px">
                   <p>Pasang Lowongan | ikuti kami </p>
               </div>
@@ -10,7 +11,7 @@
                   <p>Tentang GoodJob |  Pusat Bantuan</p>
               </div>
           </div>
-            <nav class="navbar navbar-expand-lg navbar-light" style="margin-top:12px"  >
+            <nav class="navbar navbar-expand-lg navbar-light bg-white">
              <a class="navbar-brand" href="#">{{logo}}</a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -43,7 +44,8 @@
             </div>
           </nav>
         </div>
-        <hr class="garis" >
+        <!-- <hr class="garis" > -->
+        </div>
     <!-- navbar -->
   </div>
 </template>
