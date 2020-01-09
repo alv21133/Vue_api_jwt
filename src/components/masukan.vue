@@ -1,5 +1,5 @@
 <template>
-	<div class="masukan">
+	<div class="masukan" style="margin-top:90px">
 		<atas logo="GoodJob"></atas>
 		<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
 				<div class="carousel-inner">
@@ -157,6 +157,27 @@
 					</div>
 				</div>
 			</div>
+
+			<div class="container">
+				<div class="form-row" v-for="(key, zx) in input_baru" :key="zx">
+					<div class="col-7">
+						<input type="text" v-model="key.asal" class="form-control" placeholder="City">
+					</div>
+					<div class="col">
+						<input type="text" v-model="key.desa" class="form-control" placeholder="State">
+					</div>
+					<div class="col">
+						<input type="text" v-model="key.kode_pos" class="form-control" placeholder="Zip">
+					</div>
+				</div>
+
+				<div class="row">
+					<button class="btn btn-danger" v-on:click="hapusdata">hapus</button>
+					<button class="btn btn-warning" v-on:click="tambahdata">tambah</button>
+					<button class="btn btn-info" v-on:click="kirim()">Submit</button>
+				</div>
+		</div>
+
 	</div>
 </template>
 
@@ -176,7 +197,11 @@ export default {
 					],
 		rows: [
 			{ 'select': 1, 'name': '', 'check': false, 'subrows': [{  answer: ''}]}
-		]
+		],
+
+		input_baru: [
+			{'asal' :'', 'desa' : '' , 'kode_pos':'' }
+		],
 
 	}),
 	components:{
@@ -191,19 +216,42 @@ export default {
 		deleteRow: function(row) {
 			this.rows.pop(row);
 		},
+		tambahdata: function()
+		{
+			this.input_baru.push({'asal' :'', 'desa' : '' , 'kode_pos':'' })
+		},
+		hapusdata : function(row)
+		{
+			this.input_baru.pop(row)
+		},
 		submit()
 		{
+			// fix membuat data di masukan ke dalam array
+			let key= [];
 			this.rows.forEach(row => {
-				let key= new Array();
 				key.push(row.select);
-				console.log(key);
+			});
+			console.log(key);
+
+		},
+
+		kirim(){
+
+			let data= [];
+
+			this.input_baru.forEach(index =>{
+
+				data.push( index.asal, index.desa , index.kode_pos )
+
 			});
 
+			console.log(data)
 		}
 
 	},
 
 	mounted(){
+
 
 	}
 

@@ -1,7 +1,18 @@
 <template>
-	<div class="movie">
-		<atas logo="GoodJob"></atas>
+	<div class="movie" style="margin-top:90px">
+		<atas logo="GoodJob" ></atas>
+
 				<div class="container">
+				
+					<div v-show="hasils.length < 20 " class="row">
+						<div class="col-md-4">
+					<vcl-facebook></vcl-facebook></div>
+						<div class="col-md-4">
+					<vcl-facebook></vcl-facebook></div>
+						<div class="col-md-4">
+					<vcl-facebook></vcl-facebook></div>
+					</div>
+
 		<div class="row ">
 			<div v-for="(hasil, i) in hasils" :key="i">
 					<div class=" card col-md-11 text-center" style="margin-left: 15px">

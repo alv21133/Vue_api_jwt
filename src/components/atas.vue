@@ -1,7 +1,7 @@
 <template>
   <div id="atas">
       <!-- navbar -->
-      <div style="z-index:99;position:fixed; width:100%">
+      <div style="z-index:255;position:fixed; width:100% ; margin-top: -90px;">
         <div id="nav">
           <div class="row justify-content-between bg-light" >
               <div class="col-md-4 offset-md-1" style="padding-top:6px">
@@ -47,6 +47,8 @@
         <!-- <hr class="garis" > -->
         </div>
     <!-- navbar -->
+
+
   </div>
 </template>
 <script>
@@ -54,6 +56,9 @@ export default {
     name  : "atas",
     props :{
       logo: String,
+    },
+    methods : {
+
     }
 }
 </script>

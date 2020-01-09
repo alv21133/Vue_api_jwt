@@ -1,6 +1,7 @@
 import Vue from "vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
+import { VclFacebook, VclInstagram } from 'vue-content-loading';
 import atas from "@/components/atas.vue";
 Vue.use(VueAxios, axios);
 
@@ -12,12 +13,15 @@ data: ()=>({
 	key_cari:'',
 	data:'',
 	result: true,
-	filed: false
+	filed: false,
 }),
 components:{
-	atas
+	atas,
+	VclFacebook,
+    VclInstagram,
 },
 mounted(){
+
     Vue.axios.get("http://api-gateway-ext-prod-ue1-1080259533.us-east-1.elb.amazonaws.com/3/discover/movie?with_genres=18&primary_release_year=2014&api_key=801b1e0446fb600018c5926549d8b856").then((response) =>
 	{this.data = response.data;
 	for(let [key, value] of Object.entries(this.data)){

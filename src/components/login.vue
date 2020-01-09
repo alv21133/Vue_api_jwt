@@ -1,5 +1,5 @@
 <template>
-	<div class="login">
+	<div class="login" style="margin-top:90px">
 		<atas logo="GoodJob" ></atas>
 		<div class="container">
 			<input v-model="email" type="email"   placeholder="name">
