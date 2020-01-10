@@ -237,15 +237,24 @@ export default {
 
 		kirim(){
 
-			let data= [];
 
-			this.input_baru.forEach(index =>{
+			// cara membuat objek untuk request api
 
-				data.push( index.asal, index.desa , index.kode_pos )
+				let q= [];
+			this.input_baru.forEach(function(index){
+				let objek = new Object();
+				objek.desa = index.asal;
+				objek.lurah = index.desa;
+				objek.pos = index.kode_pos;
+
+				 q.push(objek);
 
 			});
 
-			console.log(data)
+			let utama = new Object();
+				utama.data = q;
+				utama.foto = 'ajdaksdj.jpg';
+			console.log(utama)
 		}
 
 	},

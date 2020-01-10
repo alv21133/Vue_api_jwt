@@ -48,7 +48,7 @@
         <h1>Werkudara Net</h1>
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt repudiandae asperiores molestiae porro necessitatibus modi minus nobis libero ipsa et earum voluptatum totam veniam laboriosam explicabo possimus, doloremque quo ea?
 
-      
+
     </div>
   </div>
 <!--/.Controls-->
@@ -101,7 +101,6 @@
 
                   </p>
               </div>
-        /div>
       </div>
   </div>
 </div>

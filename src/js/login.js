@@ -14,6 +14,8 @@ export default {
 			key:'',
 			hasil:String,
 			token:'',
+			photo: '',
+			url:'',
 			page: Boolean,
 			togle1: true,
 			togle2: false,
@@ -75,51 +77,58 @@ export default {
 				},
 
 
-			check_cookie_name()
+					check_cookie_name()
 
-				{
-					var value = document.cookie;
-					var parts = value.split("; " + name + "=");
-					if (parts.length == 2) return parts.pop().split(";").shift();
-   				},
+						{
+							var value = document.cookie;
+							var parts = value.split("; " + name + "=");
+							if (parts.length == 2) return parts.pop().split(";").shift();
+						},
 
-			get(){
+					get(){
 
-				let key_token = document.cookie.replace(/(?:(?:^|.*;\s*)kunci\s*=\s*([^;]*).*$)|^.*$/, "$1");
+						let key_token = document.cookie.replace(/(?:(?:^|.*;\s*)kunci\s*=\s*([^;]*).*$)|^.*$/, "$1");
 
-				let request = {
+						let request = {
 
-					method : 'GET',
-					headers: {
-						'Content-Type': 'application/x-www-form-urlencoded',
-						'Authorization' : 'Bearer ' + key_token
+							method : 'GET',
+							headers: {
+								'Content-Type': 'application/x-www-form-urlencoded',
+								'Authorization' : 'Bearer ' + key_token
+							},
+							url:'http://192.168.0.100:3000/blog',
+
+						};
+
+							axios(request).then((response)=>{
+								console.log(response.data)
+							})
 					},
-					url:'http://192.168.0.100:3000/blog',
 
-				};
+						//  untuk dinamix perubahan text
 
-					axios(request).then((response)=>{
-						console.log(response.data)
-					})
-			},
+					text1(){
+						this.togle1= true;
+						this.togle2= false;
+						this.togle3= false;
+					},
+					text2(){
+						this.togle1= false;
+						this.togle2= true;
+						this.togle3= false;
+					},
+					text3(){
+						this.togle1= false;
+						this.togle2= false;
+						this.togle3= true;
+					},
 
+					upload_gambar(event){
 
-			text1(){
-				this.togle1= true;
-				this.togle2= false;
-				this.togle3= false;
-			},
-			text2(){
-				this.togle1= false;
-				this.togle2= true;
-				this.togle3= false;
-			},
-			text3(){
-				this.togle1= false;
-				this.togle2= false;
-				this.togle3= true;
-			}
+						this.photo= event.target.files[0];
+						this.url = URL.createObjectURL(this.photo);
 
+					}
 
 
 		},
